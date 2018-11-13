@@ -10,8 +10,7 @@ class Movie < ApplicationRecord
   }, _suffix: :scope
 
   # == Relations ==============================================================
-  has_many :tags
-
+  has_many :comments
   # == Validations ============================================================
   validates :title, presence: true
 end
