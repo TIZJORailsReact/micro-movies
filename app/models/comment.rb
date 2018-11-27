@@ -1,10 +1,10 @@
 class Comment < ApplicationRecord
   belongs_to :movie
 
-  validates :user_id, presence: true
+  validates :login, presence: true
 
-  scope :my_comments, -> (user_id) do
-    where(user_id: user_id)
+  scope :my_comments, -> (login) do
+    where(login: login)
   end
 
   scope :movie_comments, -> (movie_id) do
