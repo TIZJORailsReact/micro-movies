@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-    resources :movies, only: %i(index show), defaults: {format: :json}
-    resources :tags, defaults: {format: :json}
+    resources :movies, only: %i(index show) do
+      resources :comments
+    end
 end

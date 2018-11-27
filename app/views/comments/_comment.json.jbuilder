@@ -1,7 +1,7 @@
 json.extract! comment,
               :id,
               :movie_id,
-              :user_id,
+              :login,
               :content,
               :created_at,
               :updated_at

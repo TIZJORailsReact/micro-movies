@@ -1,4 +1,4 @@
 json.extract! movie,
               :id,
-              :name,
+              :title,
               :genre

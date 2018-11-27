@@ -8,7 +8,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-    if @comment.save(comment_params)
+    @comment = Movie.find(params[:movie_id]).comments.new
+    @comment.update(comment_params)
+    if @comment.save
       render @comment
     else
       head 422
@@ -32,7 +34,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:movie_id, :user_id, :content)
+    params.require(:comment).permit(:login, :content)
   end
 
   private
