@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i(show update destroy)
   has_scope :my_comments
-  has_scope :movie_comments
 
   def index
     @comments = apply_scopes(Comment.all)
