@@ -7,10 +7,11 @@ class MoviesController < ApplicationController
   has_scope :animation_scope, type: :boolean
 
   def index
-    @movies = apply_scopes(Movies.all)
+    @movies = apply_scopes(Movie.all)
   end
 
   def show
-    @movie = Movies.find(params[:id])
+    @movie = Movie.find(params[:id])
+    render @movie
   end
 end
