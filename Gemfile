@@ -45,3 +45,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Filtering
 gem 'has_scope'
+gem 'apipie-rails'
