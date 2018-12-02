@@ -10,6 +10,7 @@ class MoviesController < ApplicationController
     property :id, Integer, desc: "Movie id"
     property :title, String, :desc => "Movie title"
     property :genre, ['drama', 'comedy', 'action', 'horror', 'thriller', 'animation'], :desc => "Movie genre"
+    property :link, String, :desc => "Link to movie"
   end
 
   api :GET, "movies/", "Get all movies"
