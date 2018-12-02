@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
 
   api :GET, "movies/:id", "Get specific movie"
   param :id, Integer, desc: "Movie id", required: true
-  returns :movie, :code => 200, :desc => "All movies"
+  returns :movie, :code => 200, :desc => "Specific movie"
   def show
     @movie = Movie.find(params[:id])
     render @movie

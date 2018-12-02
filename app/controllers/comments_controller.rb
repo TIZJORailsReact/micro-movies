@@ -15,13 +15,15 @@ class CommentsController < ApplicationController
       property :content, String, :desc => "Comment content"
   end
 
-  api :GET, "comments/", "Get all comments"
+  api :GET, "movies/:movie_id/comments/", "Get all comments"
+  param :movie_id, Integer, required: true
   returns :array_of => :commentResponse, :code => 200, :desc => "All comments"
   def index
     @comments = apply_scopes(Comment.all)
   end
 
-  api :POST, 'comments/', "Create comment"
+  api :POST, 'movies/:movie_id/comments/', "Create comment"
+  param :movie_id, Integer, required: true
   param_group :comment
   returns :code => 200, :desc => "Successfully create comment"
   returns :code => 422, :desc => 'Cannot save comment'
@@ -41,7 +43,8 @@ class CommentsController < ApplicationController
     end
   end
 
-  api :PUT, 'comments/:id', "Update exists comment"
+  api :PUT, 'movies/:movie_id/comments/:id', "Update exists comment"
+  param :movie_id, Integer, required: true
   param :id, Integer, required: true, :only_in => :request, desc: 'Comments id'
   param_group :comment
   returns :code => 200, :desc => "Successfully update comment"
@@ -61,7 +64,8 @@ class CommentsController < ApplicationController
     end
   end
 
-  api :DELETE, 'comments/:id', "Delete comment"
+  api :DELETE, 'movies/:movie_id/comments/:id', "Delete comment"
+  param :movie_id, Integer, required: true
   param :id, Integer, required: true, :only_in => :request, desc: 'Comments id'
   returns :code => 200, :desc => "Successfully deletes comment"
   returns :code => 404, :desc => "Comment not found"
