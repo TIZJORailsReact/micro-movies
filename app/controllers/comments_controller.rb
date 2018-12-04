@@ -10,14 +10,15 @@ class CommentsController < ApplicationController
   end
 
   def_param_group :commentResponse do
-      property :id, Integer, desc: "Comment id"
-      property :login, String, :desc => "Comment author"
-      property :content, String, :desc => "Comment content"
+    property :id, Integer, desc: "Comment id"
+    property :login, String, :desc => "Comment author"
+    property :content, String, :desc => "Comment content"
   end
 
   api :GET, "movies/:movie_id/comments/", "Get all comments"
   param :movie_id, Integer, required: true
   returns :array_of => :commentResponse, :code => 200, :desc => "All comments"
+
   def index
     @comments = apply_scopes(Comment.all)
   end
@@ -57,10 +58,15 @@ class CommentsController < ApplicationController
   formats ['json']
 
   def update
-    if @comment.update(comment_params)
-      render @comment
+    token = params[:token].decode
+    if token.first[:login] == @comment.login
+      if @comment.update(comment_params)
+        render @comment
+      else
+        head 422
+      end
     else
-      head 422
+      head 401
     end
   end
 
@@ -72,10 +78,15 @@ class CommentsController < ApplicationController
   returns :code => 422, :desc => 'Cannot delete comment'
 
   def destroy
-    if @comment.destroy
-      head 200
+    token = params[:token].decode
+    if token.first[:login] == @comment.login
+      if @comment.destroy
+        head 200
+      else
+        head 422
+      end
     else
-      head 422
+      head 401
     end
   end
 
