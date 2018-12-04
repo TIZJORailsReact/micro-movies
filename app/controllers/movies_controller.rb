@@ -17,7 +17,6 @@ class MoviesController < ApplicationController
   returns :array_of => :movie, :code => 200, :desc => "All movies"
   def index
     @movies = apply_scopes(Movie.all)
-    render @movies
   end
 
   api :GET, "movies/:id", "Get specific movie"
