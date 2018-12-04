@@ -57,8 +57,6 @@ class CommentsController < ApplicationController
   formats ['json']
 
   def update
-    authorize @comment.login, params[:login] #TODO
-
     if @comment.update(comment_params)
       render @comment
     else
