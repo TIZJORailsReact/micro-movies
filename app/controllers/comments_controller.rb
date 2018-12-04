@@ -58,8 +58,7 @@ class CommentsController < ApplicationController
   formats ['json']
 
   def update
-    token = params[:token].decode
-    if token.first[:login] == @comment.login
+    if param[:login] == @comment.login
       if @comment.update(comment_params)
         render @comment
       else
@@ -78,8 +77,7 @@ class CommentsController < ApplicationController
   returns :code => 422, :desc => 'Cannot delete comment'
 
   def destroy
-    token = params[:token].decode
-    if token.first[:login] == @comment.login
+    if params[:login] == @comment.login
       if @comment.destroy
         head 200
       else
