@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   apipie
-    resources :movies, only: %i(index show), format: ['json'] do
-      resources :comments, except: :show, format: ['json']
+
+    resources :movies, only: %i(index show), :defaults => { :format => 'json' } do
+      resources :comments, except: :show, :defaults => { :format => 'json' }
     end
 end
