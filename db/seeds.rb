@@ -14,4 +14,3 @@ Movie.create!(title: "Aquaman", genre: :action, link: "h-k0-Z9b4Cw")
 Movie.create!(title: "X-MEN Dark Phoenix", genre: :action, link: "QvpYp11Q7fA")
 Movie.create!(title: "Bumblebee", genre: :action, link: "lcwmDAYt22k")
 Movie.create!(title: "Robin Hood", genre: :action, link: "NXfjRgc8Dls")
-
