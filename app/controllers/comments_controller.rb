@@ -36,8 +36,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Movie.find(params[:movie_id]).comments.new
-    @comment.update(comment_params)
-    if @comment.save
+    if @comment.save(comment_params)
       render @comment
     else
       head 422
