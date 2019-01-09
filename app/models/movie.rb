@@ -26,15 +26,13 @@ class Movie < ApplicationRecord
         genres << movie.genre
       end
       genres.each do |genre|
-        recommended << where(genre: genre).sample
+        movies = where(genre: genre)
+        recommended << movies.delete_if { |x| recommended.include?(x) || liked.include?(x) }.sample
       end
     end
-    p liked.inspect
-    p genres.inspect
     while recommended.size < 5
       recommended << Movie.all.sample
     end
-    p recommended.inspect
     recommended
   end
 
