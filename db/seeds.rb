@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Movie.destroy_all
 Movie.create!(title: "Captain Marvel", genre: :action, link: "tkSuLa3o_5A")
 Movie.create!(title: "Kung Fury", genre: :action, link: "bS5P_LAqiVg")
 Movie.create!(title: "Operation Overlord", genre: :horror, link: "kQBCQpl4VMI")
@@ -32,7 +33,6 @@ Movie.create!(title: "Triple Frontier", genre: :action, link: "YWbrTLsplyA")
 Movie.create!(title: "Brightburn", genre: :horror, link: "EKGATzNnr8c")
 Movie.create!(title: "Avengers: Endgame", genre: :action, link: "ee1172yeqyE")
 Movie.create!(title: "Spider-Man: Into the Spider-Verse", genre: :animation, link: "_aHDqS8EMn0")
-Movie.create!(title: "The Lion King", genre: :animation, link: "zCecE7OyVMU")
 Movie.create!(title: "Serenity", genre: :thriller, link: "eqDHqOcXjRQ")
 Movie.create!(title: "Dumbo", genre: :animation, link: "ocWpGdITSR4")
 Movie.create!(title: "Wonder Park", genre: :animation, link: "3_bUymlkSuA")
