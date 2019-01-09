@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     resource :likes, only: :destroy, :defaults => {:format => 'json'}
   end
 
-  get 'favorites', to: 'movies#favorites', :defaults => {:format => 'json'}
+  get 'favorites/movies', to: 'movies#favorites', :defaults => {:format => 'json'}
 end
