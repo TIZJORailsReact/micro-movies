@@ -12,11 +12,15 @@ class MoviesController < ApplicationController
   def_param_group :movie do
     property :id, Integer, desc: "Movie id"
     property :title, String, :desc => "Movie title"
-    property :genre, ['drama', 'comedy', 'action', 'horror', 'thriller', 'animation'], :desc => "Movie genre"
+    property :genre, %w(drama comedy action horror thriller animation), :desc => "Movie genre"
     property :link, String, :desc => "Link to movie"
   end
 
-  api :GET, "movies/", "Get all movies"
+  api :GET, "movies/", "Get all movies and 5 random recommendations"
+  returns :array_of => :movie, :code => 200, :desc => "All movies"
+
+  api :GET, "movies?login=login", "Get all movies and 5 recommendations based
+ on user likes"
   returns :array_of => :movie, :code => 200, :desc => "All movies"
   def index
     @movies = apply_scopes(Movie.all)
