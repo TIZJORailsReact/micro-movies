@@ -6,7 +6,7 @@ class LikesController < ApplicationController
   end
 
   api :POST, 'movies/:movie_id/likes/', "Create like"
-  param :movie_id, Integer, required: true
+  param :movie_id, String, required: true
   param_group :like
   returns :code => 200, :desc => "Successfully create like"
   returns :code => 422, :desc => 'Cannot save like'
@@ -25,7 +25,7 @@ class LikesController < ApplicationController
   end
 
   api :DELETE, 'movies/:movie_id/like', "Delete like"
-  param :movie_id, Integer, required: true
+  param :movie_id, String, required: true
   returns :code => 200, :desc => "Successfully deletes like"
   returns :code => 404, :desc => "Like not found"
   returns :code => 422, :desc => 'Cannot delete like'
