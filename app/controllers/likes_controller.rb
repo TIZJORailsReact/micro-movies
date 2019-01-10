@@ -1,5 +1,19 @@
 class LikesController < ApplicationController
+  def_param_group :like do
+    param :like, Hash, desc: "A like object", required: true do
+      param :login, String, :desc => "User login"
+    end
+  end
 
+  api :POST, 'movies/:movie_id/likes/', "Create like"
+  param :movie_id, Integer, required: true
+  param_group :like
+  returns :code => 200, :desc => "Successfully create like"
+  returns :code => 422, :desc => 'Cannot save like'
+  example " 'like': {
+                    'login': 'TestLogin'
+                    } "
+  formats ['json']
   def create
     @like = Movie.find(params[:movie_id]).likes.new(likes_params)
 
@@ -10,6 +24,11 @@ class LikesController < ApplicationController
     end
   end
 
+  api :DELETE, 'movies/:movie_id/like', "Delete like"
+  param :movie_id, Integer, required: true
+  returns :code => 200, :desc => "Successfully deletes like"
+  returns :code => 404, :desc => "Like not found"
+  returns :code => 422, :desc => 'Cannot delete like'
   def destroy
     @like = Movie.find(params[:movie_id]).likes.find_by(user: params[:login])
     if @like.present?

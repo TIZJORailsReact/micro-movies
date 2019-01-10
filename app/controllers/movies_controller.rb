@@ -22,6 +22,8 @@ class MoviesController < ApplicationController
     @movies = apply_scopes(Movie.all)
   end
 
+  api :GET, "favorites/movies?login=login", "Get movies liked by user"
+  returns :array_of => :movie, :code => 200, :desc => "Movies liked by user"
   def favorites
     @movies = Movie.liked(params[:login])
   end
