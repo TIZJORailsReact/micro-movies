@@ -22,6 +22,11 @@ class MoviesController < ApplicationController
   api :GET, "movies?login=login", "Get all movies and 5 recommendations based
  on user likes"
   returns :array_of => :movie, :code => 200, :desc => "All movies"
+
+  api :GET, "movies?gender_scope=true", "Get all movies in given gender and 5
+random recommendations"
+  returns :array_of => :movie, :code => 200, :desc => "All movies in given
+gender"
   def index
     @movies = apply_scopes(Movie.all)
   end
